@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite System "https://testng.org/testng-1.0dtd">
+
+<suite name="Smoke test">
+    <listeners>
+        <listener class-name="TestListener"/>
+    </listeners>
+    <test thread-count="1" name="Test 1">
+        <parameter name="testVar" value="test param"/>
+        <parameter name="testVar2" value="test param2"/>
+        <classes>
+            <class name="BookDemoTest"/>
+        </classes>
+    </test>
+    <test thread-count="1" name="Test 1">
+        <parameter name="testVar" value="test param"/>
+        <parameter name="testVar2" value="test param2"/>
+        <classes>
+            <class name="BookDemoTest"/>
+        </classes>
+    </test>
+    <test thread-count="1" name="Test 1">
+        <parameter name="testVar" value="test param"/>
+        <parameter name="testVar2" value="test param2"/>
+        <classes>
+            <class name="BookDemoTest"/>
+        </classes>
+    </test>
+    <test thread-count="1" name="Test 1">
+        <parameter name="testVar" value="test param"/>
+        <parameter name="testVar2" value="test param2"/>
+        <classes>
+            <class name="BookDemoTest"/>
+        </classes>
+    </test>
+
+</suite>
