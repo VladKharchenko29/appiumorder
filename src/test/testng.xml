@@ -3,7 +3,7 @@
 
 <suite name="Smoke test">
     <listeners>
-        <listener class-name="TestListener"/>
+        <listener class-name="listeners.TestListener"/>
     </listeners>
     <test thread-count="1" name="Test 1">
         <parameter name="testVar" value="test param"/>

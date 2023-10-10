@@ -48,6 +48,65 @@
             <artifactId>webdrivermanager</artifactId>
             <version>5.5.3</version>
         </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>2.13.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>2.0.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aeonbits.owner</groupId>
+            <artifactId>owner</artifactId>
+            <version>1.0.12</version>
+        </dependency>
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
+                <configuration>
+                    <!--Konfiguracja Allura ze ścieżką do biblioteki aspectjweaver-->
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.9.5/aspectjweaver-1.9.5.jar"
+                    </argLine>
+                    <!--Nowy parametr określający gdzie maven-surefire-plugin ma zapisywać wyniki z testów-->
+                    <systemPropertyVariables>
+                        <allure.results.directory>${basedir}/target/allure-results</allure.results.directory>
+                    </systemPropertyVariables>
+                </configuration>
+                <!--Dodanie dodatkowych zależności do maven-surefire-plugin w postaci biblioteki aspectjweaver-->
+                <!--Sekcja ta określa zależności dla danego pluginu-->
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>1.9.5</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
+            <!--Plugin Allure do generowania raportów-->
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.10.0</version>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
